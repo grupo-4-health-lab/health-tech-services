@@ -1,0 +1,7 @@
+const path = require('path');
+
+module.exports = {
+  'config': path.resolve('src/config', 'config.js'),
+  'seeders-path': path.resolve('src/seeders'),
+  'debug': process.env.NODE_ENV === 'PRODUCTION'
+}
