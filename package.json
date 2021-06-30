@@ -1,17 +1,17 @@
 {
-  "name": "health-tech-api",
+  "name": "health-tech-services",
   "version": "1.0.0",
   "description": "Back-end application of HT app",
   "main": "./dist/index.js",
   "scripts": {
     "prestart": "npx sequelize-cli db:create",
     "start": "tsc && node ./dist/index.js",
-    "debug": "set DEBUG=app:*,database:*,NODE_ENV=development && npm run start",
-    "debug:unix": "export DEBUG=app:*,database:*,NODE_ENV=development && npm run start"
+    "debug": "set DEBUG=app:*,database:* && npm run start",
+    "debug:unix": "export DEBUG=app:*,database:* && npm run start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grupo-4-health-lab/health-tech.git"
+    "url": "git+https://github.com/grupo-4-health-lab/health-tech-services.git"
   },
   "engines": {
     "node": "10"
@@ -19,9 +19,9 @@
   "author": "Grupo 4 - Health Tech",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/grupo-4-health-lab/health-tech/issues"
+    "url": "https://github.com/grupo-4-health-lab/health-tech-services/issues"
   },
-  "homepage": "https://github.com/grupo-4-health-lab/health-tech#readme",
+  "homepage": "https://github.com/grupo-4-health-lab/health-tech-services#readme",
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.2.5",

@@ -8,7 +8,9 @@ import debug from 'debug';
 import helmet from 'helmet';
 
 import { BaseRouter }  from './src/routes/base.router';
+
 import { AuthRouter } from './src/routes/auth/auth.router.config';
+import { CollaboratorsRouter } from './src/routes/collaborators/collaborators.router.config';
 
 import { AddressInfo } from 'net';
 
@@ -67,6 +69,7 @@ class Server {
 
     private loadRoutes(): void {
         routes.push(new AuthRouter(this.app));
+        routes.push(new CollaboratorsRouter(this.app));
         
         this.app.get('/', (_: express.Request, res: express.Response) => {
             res.sendStatus(200);

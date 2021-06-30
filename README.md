@@ -19,6 +19,7 @@ Acesse este [link](https://github.com/grupo-4-health-lab/health-tech).
 ## Rodando o projeto
 ### Configurando o ambiente
 - Certifique-se que o NodeJS está instalado (versão `10.15.0`)
+- Certifique-se que o MySQL está instalado
 - Execute o seguinte comando
 ```
 npm install --from-lock-file

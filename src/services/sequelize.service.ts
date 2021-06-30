@@ -6,10 +6,11 @@ const debugLog: debug.IDebugger = debug('database:instance');
 
 class SequelizeService {
     private static instance: SequelizeService;
-    private environment: string = process.env.NODE_ENV as string;
+    private environment: string = process.env.NODE_ENV! || 'development';
     public sequelize: Sequelize;
 
     constructor() {
+        console.log(this.environment);
         this.sequelize = new Sequelize(
             config[this.environment].database,
             config[this.environment].username,
