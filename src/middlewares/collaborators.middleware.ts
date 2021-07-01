@@ -31,11 +31,20 @@ class CollaboratorsMiddleware {
     }
     
     public async validateExistentEmail(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
+        if (req.method === 'PUT' && !req.body.email) {
+            next();
+            return;
+        }
+
         const collaborator: ICollaborator | undefined = await CollaboratorsService.getByEmail(req.body.email);
 
-        if (collaborator) {
+        if (collaborator && req.method === 'POST') {
             res.status(400).send({error: 'Colaborador com este email já existente.'});
-        } else {
+        } 
+        else if (collaborator && req.method === 'PUT' && parseInt(req.params['id']) !== collaborator.id) {
+            res.status(400).send({error: 'Colaborador com este email já existente.'});
+        }
+        else {
             next();
         }
     }

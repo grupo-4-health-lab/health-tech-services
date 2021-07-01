@@ -50,7 +50,7 @@ class CollaboratorsController {
 
     public async update(req: express.Request, res: express.Response): Promise<void> {
         try {
-            if (req.body.permission_level) {
+            if (req.body.permissao) {
                 res.status(409).send({ error: "Não é permitido a alteração de nível de permissão." });
                 return;
             }
