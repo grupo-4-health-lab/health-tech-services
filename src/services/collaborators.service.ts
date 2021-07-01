@@ -267,7 +267,6 @@ class CollaboratorsService {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isInt: true, 
                     len: [0, 256]
                 }
             },
@@ -287,7 +286,6 @@ class CollaboratorsService {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isInt: true,
                     len: [0, 24]
                 }
             },
@@ -319,7 +317,6 @@ class CollaboratorsService {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isInt: true,
                     len: [0, 128]
                 }
             },
@@ -327,7 +324,6 @@ class CollaboratorsService {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isInt: true,
                     len: [0, 128]
                 }
             },
@@ -335,7 +331,6 @@ class CollaboratorsService {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isInt: true,
                     len: [2, 2]
                 }
             },

@@ -39,8 +39,8 @@ class CollaboratorsController {
             });
         }
         catch (err) {
-            if (err instanceof ValidationError) {              
-                res.status(400).send({error: 'Favor preencher os campos adequadamente'});
+            if (err instanceof ValidationError) {
+                res.status(400).send({error: `Favor preencher os campos adequadamente: ${err.errors.map(error => error.message)}`});
                 return;
             }
 
@@ -50,17 +50,13 @@ class CollaboratorsController {
 
     public async update(req: express.Request, res: express.Response): Promise<void> {
         try {
-            if (req.body.permissao) {
-                res.status(409).send({ error: "Não é permitido a alteração de nível de permissão." });
-                return;
-            }
-            
+            delete req.body.senha;
             await CollaboratorsService.update({id: parseInt(req.params.id), ...req.body});
             res.status(204).send();
         }
         catch (err) {
-            if (err instanceof ValidationError) {                
-                res.status(400).send({error: 'Favor preencher os campos adequadamente'});
+            if (err instanceof ValidationError) {
+                res.status(400).send({error: `Favor preencher os campos adequadamente: ${err.errors.map(error => error.message)}`});
                 return;
             }
 
