@@ -21,6 +21,7 @@ class CollaboratorsController {
 
     public async get(req: express.Request, res: express.Response): Promise<void> {
         const collaborator = await collaboratorsDao.getById(parseInt(req.params.id));
+        delete collaborator?.senha;
         res.status(200).send(collaborator);
     }
 
@@ -28,7 +29,9 @@ class CollaboratorsController {
         try {
             const newPassword: string = crypto.randomBytes(4).toString('hex');
             req.body.password = await argon2.hash(newPassword);
+
             const id = await collaboratorsDao.create(req.body);
+
             res.status(201).send({
                 id,
                 message: `Colaborador '${req.body.nome}' adicionado com sucesso.`,

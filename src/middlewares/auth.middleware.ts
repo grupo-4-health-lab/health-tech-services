@@ -24,12 +24,13 @@ class AuthMiddleware {
     public async verifyPassword(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
         const collaborator: ICollaborator | undefined = await CollaboratorsDao.getByEmail(req.body.email);
 
-        if (collaborator && await argon2.verify(collaborator.senha, req.body.senha)) {
+        if (collaborator && await argon2.verify(collaborator.senha!, req.body.senha)) {
+            req.body.id = collaborator.id;
             next();
-            return;
         }
-
-        res.status(400).send({error: 'Usuário ou senha incorreto(s)'});
+        else {
+            res.status(400).send({error: 'Usuário ou senha incorreto(s)'});
+        }
     }
 }
 

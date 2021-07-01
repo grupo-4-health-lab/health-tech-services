@@ -1,7 +1,7 @@
 import { BaseRouter } from '../base.router';
-import authController from './auth.controller';
-import jwtMiddleware from '../../middlewares/jwt.middleware';
-import authMiddleware from '../../middlewares/auth.middleware';
+import AuthController from './auth.controller';
+import JWTMiddleware from '../../middlewares/jwt.middleware';
+import AuthMiddleware from '../../middlewares/auth.middleware';
 import express from 'express';
 
 export class AuthRouter extends BaseRouter {
@@ -11,16 +11,16 @@ export class AuthRouter extends BaseRouter {
 
     public configureRoutes(): express.Application {
         this.app.post(`/auth`, [
-            authMiddleware.validateBodyRequest,
-            authMiddleware.verifyPassword,
-            authController.createJWT
+            AuthMiddleware.validateBodyRequest,
+            AuthMiddleware.verifyPassword,
+            AuthController.createJWT
         ]);
 
         this.app.post(`/auth/refresh-token`, [
-            jwtMiddleware.validJWTNeeded,
-            jwtMiddleware.verifyRefreshBodyField,
-            jwtMiddleware.validRefreshNeeded,
-            authController.createJWT
+            JWTMiddleware.validJWTNeeded,
+            JWTMiddleware.verifyRefreshBodyField,
+            JWTMiddleware.validRefreshNeeded,
+            AuthController.createJWT
         ]);
 
         return this.app;

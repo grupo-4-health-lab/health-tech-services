@@ -379,8 +379,7 @@ class CollaboratorsDao {
                 }
             },
             senha: {
-                type: DataTypes.STRING,
-                defaultValue: new Date().getTime().toString()
+                type: DataTypes.STRING
             }
     }, { createdAt: false, updatedAt: false });
 

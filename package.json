@@ -23,18 +23,19 @@
   },
   "homepage": "https://github.com/grupo-4-health-lab/health-tech-services#readme",
   "dependencies": {
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
     "@swc/core": "^1.2.61",
     "@swc/wasm": "^1.2.61",
     "argon2": "^0.28.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
     "express-winston": "^4.1.0",
     "helmet": "^4.6.0",
-    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
     "sequelize": "^6.6.2",
-    "winston": "^3.3.3",
-    "debug": "^4.3.1",
-    "express": "^4.17.1"
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",

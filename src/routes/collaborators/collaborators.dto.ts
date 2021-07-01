@@ -48,5 +48,5 @@ export interface ICollaborator {
     cep_filial: string;
     cnpj_filial: string;
     telefone_filial: string;
-    senha: string;
+    senha?: string;
 }

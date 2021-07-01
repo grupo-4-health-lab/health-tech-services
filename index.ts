@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import * as http from 'http';
 
 import * as winston from 'winston';
@@ -25,6 +26,8 @@ class Server {
         
         const server: http.Server = http.createServer(this.app);
         const port: Number = +process.env.PORT! || 3000;
+
+        this.app.use(bodyParser.json());
 
         this.loadMiddlewares();
         this.loadRoutes();
