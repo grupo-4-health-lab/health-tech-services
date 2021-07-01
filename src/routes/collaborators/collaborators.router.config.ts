@@ -19,7 +19,7 @@ export class CollaboratorsRouter extends BaseRouter {
         this.app.route(`/collaborators/:id`)
             .all(JWTMiddleware.validJWTNeeded, CollaboratorsMiddleware.validateExists)
             .get(CollaboratorsController.get)
-            .put(CollaboratorsController.update)
+            .put(CollaboratorsMiddleware.validateExistentEmail, CollaboratorsController.update)
             .delete(PermissionsMiddleware.onlyAdmin, CollaboratorsController.delete);
 
         return this.app;
