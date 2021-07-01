@@ -32,7 +32,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 128]
                 }
             },
@@ -68,7 +67,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 6]
                 }
             },
@@ -76,7 +74,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 2]
                 }
             },
@@ -120,7 +117,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 2]
                 }
             },
@@ -137,7 +133,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [1, 128]
                 }
             },
@@ -145,7 +140,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 128]
                 }
             },
@@ -153,7 +147,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 128]
                 }
             },
@@ -161,7 +154,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 128]
                 }
             },
@@ -169,7 +161,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 2]
                 }
             },
@@ -193,7 +184,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 20]
                 }
             },
@@ -201,7 +191,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 100]
                 }
             },
@@ -209,7 +198,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [2, 100]
                 }
             },
@@ -217,7 +205,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 20]
                 }
             },
@@ -229,7 +216,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 20]
                 }
             },
@@ -241,7 +227,6 @@ class CollaboratorsDao {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    isAlpha: true, 
                     len: [0, 56]
                 }
             },

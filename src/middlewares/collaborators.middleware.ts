@@ -14,7 +14,7 @@ class CollaboratorsMiddleware {
 
     public async validateFields(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
         const keys: Array<string> = Object.keys(req.body);
-        
+
         if (
             keys.includes('permissao') && keys.includes('nome')
             && keys.includes('sexo') && keys.includes('rg')

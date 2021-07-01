@@ -4,7 +4,7 @@ import crypto from 'crypto';
 
 class JWTMiddleware {
     private static instance: JWTMiddleware;
-    private readonly jwtSecret: string = process.env.JWT_SECRET!;
+    private static readonly jwtSecret: string = process.env.JWT_SECRET! || 'HT';
 
     public static getInstance(): JWTMiddleware {
         if (!JWTMiddleware.instance) {
@@ -24,7 +24,7 @@ class JWTMiddleware {
 
     public validRefreshNeeded(req: express.Request, res: express.Response, next: express.NextFunction): void {
         const refreshToken: string = Buffer.from(req.body.refreshToken, 'base64').toString();
-        const hash: string = crypto.createHmac('sha512', req.body.jwt.refreshKey).update(req.body.jwt.userId + this.jwtSecret).digest("base64");
+        const hash: string = crypto.createHmac('sha512', req.body.jwt.refreshKey).update(req.body.jwt.userId + JWTMiddleware.jwtSecret).digest("base64");
 
         if (hash === refreshToken) {
             next();
@@ -35,19 +35,20 @@ class JWTMiddleware {
     };
 
     public validJWTNeeded(req: express.Request, res: express.Response, next: express.NextFunction): void {
-        let authorization: string = req.headers['Authorization'] as string;
+        let authorization: string | undefined = req.headers.authorization;
 
         if (authorization && authorization.startsWith('Bearer ')) {
             try {
-                req.body.jwt = jwt.verify(authorization.replace('Bearer ', ''), this.jwtSecret);
+                req.body.jwt = jwt.verify(authorization.replace('Bearer ', ''), JWTMiddleware.jwtSecret);
                 next();
             }
             catch {
                 res.status(400).send({ error: 'Token inválido.' });
             }
         }
-
-        res.status(400).send({ error: 'Token inválido.' });
+        else {
+            res.status(400).send({ error: 'Token inválido.' });
+        }
     };
 }
 

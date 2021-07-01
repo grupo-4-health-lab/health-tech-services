@@ -26,6 +26,7 @@ class AuthMiddleware {
 
         if (collaborator && await argon2.verify(collaborator.senha!, req.body.senha)) {
             req.body.id = collaborator.id;
+            req.body.permissao = collaborator.permissao;
             next();
         }
         else {

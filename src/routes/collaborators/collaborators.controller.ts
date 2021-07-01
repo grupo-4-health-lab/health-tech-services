@@ -15,7 +15,7 @@ class CollaboratorsController {
     }
 
     public async list(_: express.Request, res: express.Response): Promise<void> {
-        const collaborators = await collaboratorsDao.getList();
+        const collaborators = await collaboratorsDao.getList().then(colls => colls.map(col => { delete col.senha; return col; }));
         res.status(200).send(collaborators);
     }
 
@@ -28,7 +28,7 @@ class CollaboratorsController {
     public async create(req: express.Request, res: express.Response): Promise<void> {
         try {
             const newPassword: string = crypto.randomBytes(4).toString('hex');
-            req.body.password = await argon2.hash(newPassword);
+            req.body.senha = await argon2.hash(newPassword);
 
             const id = await collaboratorsDao.create(req.body);
 
@@ -39,7 +39,7 @@ class CollaboratorsController {
             });
         }
         catch (err) {
-            if (err instanceof ValidationError) {                
+            if (err instanceof ValidationError) {              
                 res.status(400).send({error: 'Favor preencher os campos adequadamente'});
                 return;
             }
