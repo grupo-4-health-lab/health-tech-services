@@ -1,6 +1,6 @@
 import express from 'express';
-import CollaboratorsDao from '../routes/collaborators/collaborators.dao';
-import { ICollaborator } from '../routes/collaborators/collaborators.dto';
+import CollaboratorsService from '../services/collaborators.service';
+import { ICollaborator } from '../interfaces/collaborator.interface';
 
 class CollaboratorsMiddleware {
     private static instance: CollaboratorsMiddleware;
@@ -31,7 +31,7 @@ class CollaboratorsMiddleware {
     }
     
     public async validateExistentEmail(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
-        const collaborator: ICollaborator | undefined = await CollaboratorsDao.getByEmail(req.body.email);
+        const collaborator: ICollaborator | undefined = await CollaboratorsService.getByEmail(req.body.email);
 
         if (collaborator) {
             res.status(400).send({error: 'Colaborador com este email já existente.'});
@@ -41,7 +41,7 @@ class CollaboratorsMiddleware {
     }
     
     public async validateExists(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
-        const collaborator: ICollaborator | undefined = await CollaboratorsDao.getById(parseInt(req.params.id));
+        const collaborator: ICollaborator | undefined = await CollaboratorsService.getById(parseInt(req.params.id));
 
         if (collaborator) {
             next();

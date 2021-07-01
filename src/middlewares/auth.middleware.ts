@@ -1,7 +1,7 @@
 import express from 'express';
-import CollaboratorsDao from '../routes/collaborators/collaborators.dao';
 import argon2 from 'argon2';
-import { ICollaborator } from '../routes/collaborators/collaborators.dto';
+import CollaboratorsService from '../services/collaborators.service';
+import { ICollaborator } from '../interfaces/collaborator.interface';
 
 class AuthMiddleware {
     private static instance: AuthMiddleware;
@@ -22,7 +22,7 @@ class AuthMiddleware {
     }
 
     public async verifyPassword(req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> {
-        const collaborator: ICollaborator | undefined = await CollaboratorsDao.getByEmail(req.body.email);
+        const collaborator: ICollaborator | undefined = await CollaboratorsService.getByEmail(req.body.email);
 
         if (collaborator && await argon2.verify(collaborator.senha!, req.body.senha)) {
             req.body.id = collaborator.id;

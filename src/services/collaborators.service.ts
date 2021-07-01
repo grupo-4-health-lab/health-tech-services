@@ -1,12 +1,12 @@
 import { DataTypes, ModelDefined } from 'sequelize';
-import sequelizeService from '../../services/sequelize.service';
+import sequelizeService from './sequelize.service';
 import debug from 'debug';
-import { ICollaborator } from './collaborators.dto';
+import { ICollaborator } from '../interfaces/collaborator.interface';
 
 const debugLog: debug.IDebugger = debug('app:dao');
 
-class CollaboratorsDao {
-    private static instance: CollaboratorsDao;
+class CollaboratorsService {
+    private static instance: CollaboratorsService;
 
     constructor() {
         debugLog('Defining collaborators...');
@@ -368,11 +368,11 @@ class CollaboratorsDao {
             }
     }, { createdAt: false, updatedAt: false });
 
-    static getInstance(): CollaboratorsDao {
-        if (!CollaboratorsDao.instance) {
-            CollaboratorsDao.instance = new CollaboratorsDao();
+    static getInstance(): CollaboratorsService {
+        if (!CollaboratorsService.instance) {
+            CollaboratorsService.instance = new CollaboratorsService();
         }
-        return CollaboratorsDao.instance;
+        return CollaboratorsService.instance;
     }
 
     async getList() {
@@ -400,4 +400,4 @@ class CollaboratorsDao {
     }
 }
 
-export default CollaboratorsDao.getInstance();
+export default CollaboratorsService.getInstance();
