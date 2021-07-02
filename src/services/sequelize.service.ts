@@ -26,7 +26,7 @@ class SequelizeService {
                     min: 0,
                     max: 10
                 },
-                logging: debugLog
+                logging: false
             }
         );
 

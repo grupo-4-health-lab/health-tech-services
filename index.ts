@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import * as http from 'http';
+import { AddressInfo } from 'net';
 
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
@@ -12,8 +13,8 @@ import { BaseRouter }  from './src/routes/base.router';
 
 import { AuthRouter } from './src/routes/auth/auth.router.config';
 import { CollaboratorsRouter } from './src/routes/collaborators/collaborators.router.config';
-
-import { AddressInfo } from 'net';
+import { CipaMeetingsRouter } from './src/routes/cipa-meetings/cipa-meetings.router.config';
+import { VaccinesRouter } from './src/routes/vaccines/vaccines.router.config';
 
 const routes: Array<BaseRouter> = [];
 const debugLog: debug.IDebugger = debug('app:initialize');
@@ -73,9 +74,11 @@ class Server {
     private loadRoutes(): void {
         routes.push(new AuthRouter(this.app));
         routes.push(new CollaboratorsRouter(this.app));
+        routes.push(new VaccinesRouter(this.app));
+        routes.push(new CipaMeetingsRouter(this.app));
         
         this.app.get('/', (_: express.Request, res: express.Response) => {
-            res.sendStatus(200);
+            res.status(200).send('Online');
         });
     }
 }

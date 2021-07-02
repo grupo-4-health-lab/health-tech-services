@@ -3,7 +3,7 @@ import sequelizeService from './sequelize.service';
 import debug from 'debug';
 import { ICollaborator } from '../interfaces/collaborator.interface';
 
-const debugLog: debug.IDebugger = debug('app:dao');
+const debugLog: debug.IDebugger = debug('app:services:collaborators');
 
 class CollaboratorsService {
     private static instance: CollaboratorsService;

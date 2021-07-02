@@ -30,7 +30,7 @@ class JWTMiddleware {
             next();
         }
         else {
-            res.status(400).send({ error: 'Token inválido.' });
+            res.status(401).send({ error: 'Token inválido.' });
         }
     };
 
@@ -43,11 +43,11 @@ class JWTMiddleware {
                 next();
             }
             catch {
-                res.status(400).send({ error: 'Token inválido.' });
+                res.status(401).send({ error: 'Token inválido.' });
             }
         }
         else {
-            res.status(400).send({ error: 'Token inválido.' });
+            res.status(401).send({ error: 'Token inválido.' });
         }
     };
 }
