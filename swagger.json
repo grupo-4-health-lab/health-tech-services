@@ -13,6 +13,10 @@
   "basePath": "/",
   "tags": [
     {
+      "name": "Status",
+      "description": "Status do servidor"
+    },
+    {
       "name": "Autenticação",
       "description": "Endpoints para geração e atualização do token JWT"
     },
@@ -50,6 +54,22 @@
     }
   },
   "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "Testa o status do servidor",
+        "responses": {
+          "200": {
+            "description": "Resposta de sucesso",
+            "schema": {
+              "example": "Online"
+            }
+          }
+        }
+      }
+    },
     "/auth": {
       "post": {
         "tags": [
@@ -486,7 +506,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/CIPA_Meeting"
+                "$ref": "#/definitions/Meeting"
               }
             }
           },
@@ -512,7 +532,7 @@
             "in": "body",
             "description": "Reunião CIPA",
             "schema": {
-              "$ref": "#/definitions/CIPA_Meeting"
+              "$ref": "#/definitions/Meeting"
             }
           }
         ],
@@ -562,7 +582,7 @@
           "200": {
             "description": "Busca feita com sucesso",
             "schema": {
-              "$ref": "#/definitions/CIPA_Meeting"
+              "$ref": "#/definitions/Meeting"
             }
           },
           "401": {
@@ -590,7 +610,7 @@
             "in": "body",
             "description": "Reunião CIPA",
             "schema": {
-              "$ref": "#/definitions/CIPA_Meeting"
+              "$ref": "#/definitions/Meeting"
             }
           }
         ],
@@ -956,7 +976,7 @@
         }
       }
     },
-    "CIPA_Meeting": {
+    "Meeting": {
       "required": [
         "nome",
         "descricao",
