@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "prestart": "npx sequelize-cli db:create",
-    "start": "tsc && node ./dist/index.js",
+    "start": "npx tsc && node ./dist/index.js",
     "debug": "set DEBUG=app:*,database:* && npm run start",
     "debug:unix": "export DEBUG=app:*,database:* && npm run start"
   },
