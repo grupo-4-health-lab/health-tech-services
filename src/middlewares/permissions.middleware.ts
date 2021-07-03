@@ -22,7 +22,8 @@ class PermissionMiddleware {
             next();
         }
         else {
-            res.sendStatus(403);
+            res.status(403).send({ error: 'Operação permitida apenas para administradores.' });
+            return;
         }
     };
 }

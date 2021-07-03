@@ -23,6 +23,10 @@ class AuthController {
 
             req.body.refreshKey = salt;
 
+            if (req.body.jwt) {
+                delete req.body.jwt;
+            }
+
             const token: string = jwt.sign(req.body, AuthController.jwtSecret, {expiresIn: AuthController.expirationSeconds});
             const refreshToken: string = Buffer.from(hash).toString('base64');
 

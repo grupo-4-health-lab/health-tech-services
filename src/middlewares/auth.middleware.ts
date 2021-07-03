@@ -30,7 +30,7 @@ class AuthMiddleware {
             next();
         }
         else {
-            res.status(400).send({error: 'Usuário ou senha incorreto(s)'});
+            res.status(401).send({error: 'Usuário ou senha incorreto(s)'});
         }
     }
 }

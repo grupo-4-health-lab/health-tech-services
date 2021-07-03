@@ -24,7 +24,7 @@ class JWTMiddleware {
 
     public validRefreshNeeded(req: express.Request, res: express.Response, next: express.NextFunction): void {
         const refreshToken: string = Buffer.from(req.body.refreshToken, 'base64').toString();
-        const hash: string = crypto.createHmac('sha512', req.body.jwt.refreshKey).update(req.body.jwt.userId + JWTMiddleware.jwtSecret).digest("base64");
+        const hash: string = crypto.createHmac('sha512', req.body.jwt.refreshKey).update(req.body.jwt.id + JWTMiddleware.jwtSecret).digest("base64");
 
         if (hash === refreshToken) {
             next();

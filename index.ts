@@ -9,6 +9,9 @@ import cors from 'cors';
 import debug from 'debug';
 import helmet from 'helmet';
 
+import swaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('./swagger.json');
+
 import { BaseRouter }  from './src/routes/base.router';
 
 import { AuthRouter } from './src/routes/auth/auth.router.config';
@@ -69,6 +72,12 @@ class Server {
                 winston.format.json()
             )
         }));
+
+        this.app.use(
+            '/api-docs',
+            swaggerUi.serve, 
+            swaggerUi.setup(swaggerDocument)
+        );
     }
 
     private loadRoutes(): void {

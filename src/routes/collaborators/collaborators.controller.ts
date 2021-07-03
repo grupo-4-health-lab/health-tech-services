@@ -51,6 +51,12 @@ class CollaboratorsController {
     public async update(req: express.Request, res: express.Response): Promise<void> {
         try {
             delete req.body.senha;
+
+            if (parseInt(req.params.id) === 1 && req.body.permissao !== '2') {
+                res.status(400).send({error: 'Não é possível alterar a permissão de um administrador.' });
+                return;
+            }
+
             await CollaboratorsService.update({id: parseInt(req.params.id), ...req.body});
             res.status(204).send();
         }
