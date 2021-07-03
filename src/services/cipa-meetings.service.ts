@@ -39,7 +39,7 @@ class CipaMeetingsService {
                 allowNull: false
             },
             tipo: {
-                type: DataTypes.ENUM('1', '2', '3', '4'),
+                type: DataTypes.ENUM('1', '2', '3', '4', '5'),
                 allowNull: false,
                 validate: {     
                     notEmpty: true,

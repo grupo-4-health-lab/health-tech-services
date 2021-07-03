@@ -52,8 +52,8 @@ class CollaboratorsController {
         try {
             delete req.body.senha;
 
-            if (parseInt(req.params.id) === 1 && req.body.permissao !== 2) {
-                res.status(400).send({error: 'Não é possível alterar a permissão de um administrador.' });
+            if (parseInt(req.params.id) === 1 && (req.body.permissao !== 2 || req.body.email !== 'admin@admin.com')) {
+                res.status(400).send({error: 'Não é possível alterar a permissão/email de um administrador.' });
                 return;
             }
 

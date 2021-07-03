@@ -302,6 +302,338 @@
           }
         }
       }
+    },
+    "/vaccines": {
+      "get": {
+        "tags": [
+          "Vacinas"
+        ],
+        "summary": "Lista todos vacinas do sistema",
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Vaccine"
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria uma nova vacina",
+        "tags": [
+          "Vacinas"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Vacina",
+            "schema": {
+              "$ref": "#/definitions/Vaccine"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Vacina criada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/DefaultResult"
+            }
+          },
+          "400": {
+            "description": "Requisição mal formatada",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/vaccines/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id da vacina",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "summary": "Busca uma vacina pelo ID",
+        "tags": [
+          "Vacinas"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "schema": {
+              "$ref": "#/definitions/Vaccine"
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma vacina pelo ID",
+        "tags": [
+          "Vacinas"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Vacina",
+            "schema": {
+              "$ref": "#/definitions/Vaccine"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Atualizado com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclui uma vacina pelo ID",
+        "tags": [
+          "Vacinas"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Excluído com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      }
+    },
+    "/cipa-meetings": {
+      "get": {
+        "tags": [
+          "Reuniões CIPA"
+        ],
+        "summary": "Lista todas reuniões CIPA do sistema",
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CIPA_Meeting"
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria uma nova reunião CIPA",
+        "tags": [
+          "Reuniões CIPA"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Reunião CIPA",
+            "schema": {
+              "$ref": "#/definitions/CIPA_Meeting"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Reunião CIPA criada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/DefaultResult"
+            }
+          },
+          "400": {
+            "description": "Requisição mal formatada",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/cipa-meetings/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id da reunião CIPA",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "summary": "Busca uma reunião CIPA pelo ID",
+        "tags": [
+          "Reuniões CIPA"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca feita com sucesso",
+            "schema": {
+              "$ref": "#/definitions/CIPA_Meeting"
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza uma reunião CIPA pelo ID",
+        "tags": [
+          "Reuniões CIPA"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Reunião CIPA",
+            "schema": {
+              "$ref": "#/definitions/CIPA_Meeting"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Atualizado com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclui uma reunião CIPA pelo ID",
+        "tags": [
+          "Reuniões CIPA"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/Bearer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Excluído com sucesso"
+          },
+          "401": {
+            "description": "Não autorizado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Não encontrado"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -624,7 +956,7 @@
         }
       }
     },
-    "CIPA Meeting": {
+    "CIPA_Meeting": {
       "required": [
         "nome",
         "descricao",
@@ -634,23 +966,23 @@
       "properties": {
         "nome": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Nome da Reunião",
+          "example": "Eleição"
         },
         "descricao": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Descrição",
+          "example": "Ata de Eleição do Coordenador"
         },
         "data": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Data da Reunião",
+          "example": "2021-07-07"
         },
         "tipo": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Tipo da Reunião (1 - Ata de Eleição/2 - Ata de Instalação/3 - Ata de Posse/4 - Ata de Reunião Ordinária/5 - Ata de Reunião Extraordinária)",
+          "example": "1"
         } 
       }
     },
@@ -664,24 +996,38 @@
       "properties": {
         "nome": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Nome da Doença",
+          "example": "Hepatite B"
         },
         "esquema": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Esquema da Vacina",
+          "example": "Adultos sem comprovação de vacinação contra Hepatite B, devem receber o esquema completo, de 3 doses. A 2a dose deve ser dada 30 dias após a 1a dose, e a 3a dose 180 dias após a 1a dose Adultos com esquema incompleto (apenas 1 ou 2 doses), devem completar o esquema. NÃO REINICIAR O ESQUEMA."
         },
         "data_vacinacao": {
           "type": "string",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Data da Vacinação (YYYY-MM-DD)",
+          "example": "2021-07-11"
         },
         "imunidade": {
           "type": "boolean",
-          "description": "XXXXXXXXXXXXXXXXXX",
-          "example": "XXXXXXXXXXXXXXXXXX"
+          "description": "Gera imunidade",
+          "example": "false"
         } 
+      }
+    },
+    "DefaultResult": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id",
+          "example": "1"
+        },
+        "message": {
+          "type": "string",
+          "description": "Mensagem de sucesso",
+          "example": "Entidade adicionada com sucesso."
+        }
       }
     }
   }
