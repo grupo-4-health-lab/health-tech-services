@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://health-tech-services.herokuapp.com/",
+  "host": "health-tech-services.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
