@@ -4,9 +4,9 @@ Back-End do projeto Health Lab 4.0 - UniBH 2021 - Grupo 4 - Tema B
 ## Apresentação
 É possível ver a vídeo apresentação através deste [link](https://drive.google.com/file/d/1UUncezuyrUXbzC91LtzMZdWzHlynKU5T/view?usp=sharing).
 <br>
-A URL para acesso à API é 
+A URL para acesso à API é [health-tech-services.herokuapp.com](https://health-tech-services.herokuapp.com/).
 <br>
-A URl para acesso à documentação da API é 
+A URl para acesso à documentação da API é [este](https://health-tech-services.herokuapp.com/api-docs/#/).
 
 ## Arquitetura
 Este projeto foi separado em dois repositórios, sendo eles:
