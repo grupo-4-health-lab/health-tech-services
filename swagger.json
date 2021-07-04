@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "localhost:3000",
+  "host": "https://health-tech-services.herokuapp.com/",
   "basePath": "/",
   "tags": [
     {
@@ -34,7 +34,6 @@
     }
   ],
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
